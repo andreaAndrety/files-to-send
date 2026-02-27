@@ -1,0 +1,487 @@
+{
+  "info": {
+    "_postman_id": "f9a7efeb-16cd-4eba-aaa7-fa84de63fde8",
+    "name": "Parameter Management Front",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22098035"
+  },
+  "item": [
+    {
+      "name": "Update",
+      "item": [
+        {
+          "name": "Approve Update",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "message-id",
+                "value": "{{$randomUUID}}",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Name",
+                "value": "{{X-User-Name}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"idUpdate\": 1000,\r\n    \"isApproved\": true,\r\n    \"reason\": \"Porque si\",\r\n    \"approvingUser\": \"jofcastr\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/updates/approve",
+              "host": [
+                "{{PARAMENETER_MANAGEMENT_PATH}}"
+              ],
+              "path": [
+                "updates",
+                "approve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Updates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "message-id",
+                "value": "{{$randomUUID}}",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Name",
+                "value": "{{X-User-Name}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "graphql",
+              "graphql": {
+                "query": "{ \r\n    getAllUpdates {\r\n        id\r\n        adminTable {\r\n            id\r\n            tableName\r\n            tableKey\r\n            adminSubCategory{\r\n                id\r\n                name\r\n                adminCategory{\r\n                    id\r\n                    name\r\n                }\r\n            }\r\n            frequency{\r\n                id\r\n                name\r\n            }\r\n            description\r\n            owner\r\n            createdAt\r\n            updatedAt\r\n        }\r\n        status {      \r\n            id\r\n            name\r\n        }\r\n        reason\r\n        requestingUser\r\n        requestDate\r\n        approvingUser\r\n        approvalDate\r\n    }\r\n}",
+                "variables": ""
+              }
+            },
+            "url": {
+              "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+              "host": [
+                "{{PARAMENETER_MANAGEMENT_PATH}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Updates By Id",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "message-id",
+                "value": "{{$randomUUID}}",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Name",
+                "value": "{{X-User-Name}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "graphql",
+              "graphql": {
+                "query": "{ \r\n    getUpdatesById(id: 1000) {\r\n        id\r\n        adminTable {\r\n            id\r\n            tableName\r\n            tableKey\r\n            adminSubCategory{\r\n                id\r\n                name\r\n                adminCategory{\r\n                    id\r\n                    name\r\n                }\r\n            }\r\n            frequency{\r\n                id\r\n                name\r\n            }\r\n            description\r\n            owner\r\n            createdAt\r\n            updatedAt\r\n        }\r\n        status {      \r\n            id\r\n            name\r\n        }\r\n        reason\r\n        requestingUser\r\n        requestDate\r\n        approvingUser\r\n        approvalDate\r\n    }\r\n}",
+                "variables": ""
+              }
+            },
+            "url": {
+              "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+              "host": [
+                "{{PARAMENETER_MANAGEMENT_PATH}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Business Catalogs",
+      "item": [
+        {
+          "name": "Admin Category",
+          "item": [
+            {
+              "name": "Get Admin Category",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "message-id",
+                    "value": "{{$randomUUID}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Name",
+                    "value": "{{X-User-Name}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{ \r\n    getAllAdminCategories {\r\n        id\r\n        name\r\n    }\r\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+                  "host": [
+                    "{{PARAMENETER_MANAGEMENT_PATH}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Admin SubCategory",
+          "item": [
+            {
+              "name": "Get All Admin Sub Category",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "message-id",
+                    "value": "{{$randomUUID}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Name",
+                    "value": "{{X-User-Name}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{ \r\n    getAllAdminSubCategories {\r\n        id\r\n        name\r\n        adminCategory{\r\n            id\r\n            name\r\n        }\r\n    }\r\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+                  "host": [
+                    "{{PARAMENETER_MANAGEMENT_PATH}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Admin Sub Category By Id",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "message-id",
+                    "value": "{{$randomUUID}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Name",
+                    "value": "{{X-User-Name}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{ \r\n    getSubCategoriesById(id: 1) {\r\n        id\r\n        name\r\n        adminCategory{\r\n            id\r\n            name\r\n        }\r\n    }\r\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+                  "host": [
+                    "{{PARAMENETER_MANAGEMENT_PATH}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Admin Table",
+          "item": [
+            {
+              "name": "Get All Admin Tables",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "message-id",
+                    "value": "{{$randomUUID}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Name",
+                    "value": "{{X-User-Name}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{ \r\n    getAllAdminTables{\r\n        id\r\n        tableName\r\n        tableKey\r\n        adminSubCategory{\r\n            id\r\n            name\r\n            adminCategory{\r\n                id\r\n                name\r\n            }\r\n        }\r\n        frequency{\r\n            id\r\n            name\r\n        }\r\n        description\r\n        owner\r\n        createdAt\r\n        updatedAt\r\n    }\r\n    getAdminTablesByCategory(adminCategoryId: 1) {\r\n        id\r\n        tableName\r\n        adminSubCategory{\r\n            id\r\n            name\r\n            adminCategory{\r\n                id\r\n                name\r\n            }\r\n        }\r\n        frequency{\r\n            id\r\n            name\r\n        }\r\n        description\r\n        owner\r\n        createdAt\r\n        updatedAt\r\n    }   \r\n}\r\n",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+                  "host": [
+                    "{{PARAMENETER_MANAGEMENT_PATH}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Admin Tables By Category",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "message-id",
+                    "value": "{{$randomUUID}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Name",
+                    "value": "{{X-User-Name}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{\r\n    getAdminTablesByCategory(adminCategoryId: 1) {\r\n        id\r\n        tableName\r\n        adminSubCategory{\r\n            id\r\n            name\r\n            adminCategory{\r\n                id\r\n                name\r\n            }\r\n        }\r\n        frequency{\r\n            id\r\n            name\r\n        }\r\n        description\r\n        owner\r\n        createdAt\r\n        updatedAt\r\n    }   \r\n}\r\n",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+                  "host": [
+                    "{{PARAMENETER_MANAGEMENT_PATH}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+              },
+              "response": []
+            },
+            {
+              "name": "Get Admin Tables Frequent",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "message-id",
+                    "value": "{{$randomUUID}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Name",
+                    "value": "{{X-User-Name}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "{\r\n    getFrequentAdminTables {\r\n        id\r\n        tableName\r\n        adminSubCategory{\r\n            id\r\n            name\r\n            adminCategory{\r\n                id\r\n                name\r\n            }\r\n        }\r\n        frequency{\r\n            id\r\n            name\r\n        }\r\n        description\r\n        owner\r\n        createdAt\r\n        updatedAt\r\n    }   \r\n}\r\n",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+                  "host": [
+                    "{{PARAMENETER_MANAGEMENT_PATH}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Internal Transfer Rates",
+      "item": [
+        {
+          "name": "Save Internal Transfer Rates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "message-id",
+                "value": "{{$randomUUID}}",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Name",
+                "value": "{{X-User-Name}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Publication-Date",
+                "value": "2026-02-30",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "2a65622c-73e9-49ee-b8ac-6343fdfb6643",
+                  "src": "/C:/Users/jofcastr/OneDrive - Grupo Bancolombia/Principal/Desarrollo/Implementaciones Modulo Admin/Archivos pruebas TIT/TIT.csv"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/internal-transfer-rates",
+              "host": [
+                "{{PARAMENETER_MANAGEMENT_PATH}}"
+              ],
+              "path": [
+                "internal-transfer-rates"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Internal Transfer Rates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "message-id",
+                "value": "{{$randomUUID}}",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Name",
+                "value": "{{X-User-Name}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "graphql",
+              "graphql": {
+                "query": "{ \r\n    getAllInternalTransferRates{\r\n       id\r\n       update{\r\n        id\r\n       }\r\n       rateType{\r\n        id\r\n        name\r\n       }\r\n       term\r\n       dayStart\r\n       dayEnd\r\n       curve\r\n       extraRate\r\n       transferRate\r\n   } \r\n}\r\n",
+                "variables": ""
+              }
+            },
+            "url": {
+              "raw": "{{PARAMENETER_MANAGEMENT_PATH}}/graphql",
+              "host": [
+                "{{PARAMENETER_MANAGEMENT_PATH}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/graphql' \\\n--header 'Content-Type: application/json' \\\n--data '{\"query\":\"{ getAllRates { \\r\\n    id \\r\\n    year \\r\\n    month \\r\\n    rate \\r\\n    createdBy \\r\\n    validFrom \\r\\n    validTo \\r\\n    } \\r\\n}\\r\\n\",\"variables\":{}}'"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
